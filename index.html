@@ -25,32 +25,18 @@
     </svg>
     
     <div class="nav">
-        <svg class="icon nav__sync">
-            <use xlink:href="#icon-sync"></use>
-        </svg>
-        <div class="nav__title">Dokomo</div>
+        <div class="nav__title">DokomoDemo</div>
     </div>
 
     <div class="page page--map">
-        <div class="question__map js-next"></div>
+        <div id="map" class="question__map"></div>
         <div class="question__map_choose">Choose a facility above or..</div>
         <div class="question__btn js-next">Add a Facility</div>
     </div>
     
     <div class="page">
         <div class="question__title">Facility Name</div>
-        <input class="text_input" type="text" value="St. Anthonyâs Hospital and Maternity">
-    </div>
-    
-    <div class="page">
-        <div class="question__title">Location</div>
-        <input class="text_input question__location" type="text" value="6.2865, 7.0449">
-        <div class="question__btn question__location_btn">Find location</div>
-    </div>
-    
-    <div class="page">
-        <video class="question__video"></video>
-        <div class="question__btn js-picture">Take picture</div>
+        <input class="text_input" type="text" value="St. Anthonyas Hospital">
     </div>
     
     <div class="page">
@@ -63,13 +49,24 @@
     </div>
     
     <div class="page">
+        <div class="question__title">Location</div>
+        <input class="text_input question__location" type="text" value="">
+        <div class="question__btn js-location">Find location</div>
+    </div>
+    
+    <div class="page">
+        <video class="question__video js-video"></video>
+        <div class="question__btn js-picture">Take picture</div>
+    </div>
+        
+    <div class="page">
         <div class="question__title">
             That's it, you're finished!
         </div>
         <svg class="icon question__saving">
             <use xlink:href="#icon-save-disk"></use>
         </svg>
-        <div class="question__btn">Submit</div>
+        <div class="question__btn js-submit">Submit</div>
     </div>
     
     <div class="page_nav">
