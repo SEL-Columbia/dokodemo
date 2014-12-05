@@ -45,9 +45,11 @@ $('.js-prev, .js-next').click(function() {
 });
 
 
+var start_loc = [5.118915, 7.353078]; // Changed to be somewhere where revisit has data
+
 // Map
 var map = L.map('map', {
-        center: [40.809400, -73.960029],
+        center: start_loc,
         zoom: 16,
         zoomControl: false,
         doubleClickZoom: false,
@@ -69,6 +71,8 @@ var funcLayer = new L.TileLayer.Functional(function(view) {
 
 map.addLayer(funcLayer);
 
+// Revisit api call
+getNearbyFacilities(start_loc[0], start_loc[1], 1); 
 
 function getImage(url, cb) {
     // Retrieves an image from cache, possibly fetching it first
@@ -165,7 +169,67 @@ $('.js-picture')
         }
     });
 
-    
+
+/* Revisit stuff */
+// Icons ripped from nmis
+var icon_edu = new L.icon({iconUrl: "static/icons_f/normal_education.png"});
+var icon_health = new L.icon({iconUrl: "static/icons_f/normal_health.png"});
+var icon_water = new L.icon({iconUrl: "static/icons_f/normal_water.png"});
+function getNearbyFacilities(lat, lng, rad) {
+    var url = "http://revisit.global/api/v0/facilities.json";
+
+    function drawPoint(lat, lng, name, type) {
+        var marker; // leaflet wont let me create marker without icon info
+        switch(type) {
+            case "education":
+                marker = new L.marker([lat, lng], {
+                    title: name,
+                    alt: name,
+                    icon: icon_edu
+                });
+                break;
+            case "water":
+                marker = new L.marker([lat, lng], {
+                    title: name,
+                    alt: name,
+                    icon: icon_water
+                });
+                break;
+            default:
+                // just mark it as health 
+                marker = new L.marker([lat, lng], {
+                    title: name,
+                    alt: name,
+                    icon: icon_health
+                });
+                break;
+        }
+
+        marker.addTo(map);
+    };
+
+    // Revisit ajax req
+    $.get(url,{
+            near: lat + "," + lng,
+            rad: rad,
+            limit: 100,
+            fields: "name,coordinates,properties:sector", //filters results to include just those three fields,
+        },
+        function(data) {
+            var facilities = data.facilities;
+            var facility = null;
+            for(i = 0; i < facilities.length; i++) {
+                facility = facilities[i];
+                // stored lon/lat in revisit, switch around
+                drawPoint(facility.coordinates[1], 
+                        facility.coordinates[0], 
+                        facility.name, 
+                        facility.properties.sector);
+            }
+        }
+    );
+}
+
 // Finished
 $('.js-submit')
     .click(function() {
