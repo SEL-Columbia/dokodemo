@@ -17,7 +17,8 @@ break}e||r.push(t),t.touches=r.slice(),t.changedTouches=[t],n(t)};if(t[a+"touchs
 // https://github.com/ismyrnow/Leaflet.functionaltilelayer
 L.TileLayer.Functional=L.TileLayer.extend({_tileFunction:null,initialize:function(tileFunction,options){this._tileFunction=tileFunction;L.TileLayer.prototype.initialize.call(this,null,options)},getTileUrl:function(tilePoint){var map=this._map,crs=map.options.crs,tileSize=this.options.tileSize,zoom=tilePoint.z,nwPoint=tilePoint.multiplyBy(tileSize),sePoint=nwPoint.add(new L.Point(tileSize,tileSize)),nw=crs.project(map.unproject(nwPoint,zoom)),se=crs.project(map.unproject(sePoint,zoom)),bbox=[nw.x,se.y,se.x,nw.y].join(",");var view={bbox:bbox,width:tileSize,height:tileSize,zoom:zoom,tile:{row:this.options.tms?this._tileNumBounds.max.y-tilePoint.y:tilePoint.y,column:tilePoint.x},subdomain:this._getSubdomain(tilePoint)};return this._tileFunction(view)},_loadTile:function(tile,tilePoint){tile._layer=this;tile.onload=this._tileOnLoad;tile.onerror=this._tileOnError;this._adjustTilePoint(tilePoint);var tileUrl=this.getTileUrl(tilePoint);if(typeof tileUrl==="string"){tile.src=tileUrl;this.fire("tileloadstart",{tile:tile,url:tile.src})}else{if(typeof tileUrl.then==="function"){var self=this;tileUrl.then(function(tileUrl){tile.src=tileUrl;self.fire("tileloadstart",{tile:tile,url:tile.src})})}}}});L.tileLayer.functional=function(tileFunction,options){return new L.TileLayer.Functional(tileFunction,options)};
 
-
+// Revisit
+localStorage.setItem('revisit', JSON.stringify({"facilities":[{"name":"st felecitas int. nursary/ primary school","coordinates":[7.350122,5.113733],"properties":{"sector":"education"}},{"name":"holy guide secondary school school","coordinates":[7.355035,5.115278],"properties":{"sector":"education"}},{"name":"friedel krofs educational center","coordinates":[7.359303,5.120833],"properties":{"sector":"education"}},{"name":"chrislyn int'l school","coordinates":[7.350401,5.117741],"properties":{"sector":"education"}},{"name":"boy's technical college","coordinates":[7.353362,5.118594],"properties":{"sector":"education"}},{"name":"living stone model school","coordinates":[7.350776,5.115885],"properties":{"sector":"education"}},{"name":"emmanuel int. schools","coordinates":[7.36128,5.116695],"properties":{"sector":"education"}},{"name":"benett int. christain sec. school","coordinates":[7.359279,5.121544],"properties":{"sector":"education"}},{"name":"royalties int. christain school","coordinates":[7.359982,5.121158],"properties":{"sector":"education"}},{"name":"globetty int. childhood","coordinates":[7.348706,5.114887],"properties":{"sector":"education"}},{"name":"truth and faith nursery.pri school","coordinates":[7.35675,5.115477],"properties":{"sector":"education"}},{"name":"truth and faith nursery.pri school","coordinates":[7.35675,5.115477],"properties":{"sector":"education"}},{"name":"st.eugene .primary school","coordinates":[7.352945,5.111983],"properties":{"sector":"education"}},{"name":"sacred heart college","coordinates":[7.35135,5.113841],"properties":{"sector":"education"}},{"name":"mainland int. sec. school","coordinates":[7.354816,5.122756],"properties":{"sector":"education"}},{"name":"friedel kropfs school","coordinates":[7.359331,5.120389],"properties":{"sector":"education"}},{"name":"access int. schools","coordinates":[7.350041,5.110928],"properties":{"sector":"education"}},{"name":"higher grounds intl school","coordinates":[7.350188,5.111083],"properties":{"sector":"education"}},{"name":"osusu secondary school","coordinates":[7.35083,5.119811],"properties":{"sector":"education"}},{"name":"boys tech college","coordinates":[7.352777,5.119178],"properties":{"sector":"education"}},{"name":"asaokpuaja primary sch.","coordinates":[7.35242,5.111041],"properties":{"sector":"education"}},{"name":"eziobu primary school 2","coordinates":[7.352186,5.111824],"properties":{"sector":"education"}},{"name":"eziobu primary school 3","coordinates":[7.351963,5.111946],"properties":{"sector":"education"}},{"name":"queen  esther int sch prim","coordinates":[7.352412,5.119109],"properties":{"sector":"education"}},{"name":"little friends of jesus nur./primary school","coordinates":[7.352224,5.114884],"properties":{"sector":"education"}},{"name":"main comprehensive sec sch","coordinates":[7.354828,5.122588],"properties":{"sector":"education"}},{"name":"kings academy","coordinates":[7.353432,5.119445],"properties":{"sector":"education"}},{"name":"newtrend p s","coordinates":[7.346672,5.116485],"properties":{"sector":"education"}},{"name":"osusu primary school 3","coordinates":[7.352501,5.11708],"properties":{"sector":"education"}},{"name":"newtrend inter sec sch","coordinates":[7.353721,5.121276],"properties":{"sector":"education"}},{"name":"osusu p s 2","coordinates":[7.351946,5.11759],"properties":{"sector":"education"}},{"name":"sweet angels int nursery and primary school","coordinates":[7.353249,5.122914],"properties":{"sector":"education"}},{"name":"sacred heart college","coordinates":[7.351584,5.113033],"properties":{"sector":"education"}},{"name":"osusu primary school 1","coordinates":[7.352287,5.117474],"properties":{"sector":"education"}},{"name":"osusu boys secondary school","coordinates":[7.351403,5.119571],"properties":{"sector":"education"}},{"name":"queen esther sec sch","coordinates":[7.352235,5.119017],"properties":{"sector":"education"}},{"name":"family health clinic","coordinates":[7.355037,5.126192],"properties":{"sector":"health"}},{"name":"chinwendu clinic","coordinates":[7.358186,5.121137],"properties":{"sector":"health"}},{"name":"euna hospital and maternity","coordinates":[7.352931,5.120208],"properties":{"sector":"health"}},{"name":"delta hospital","coordinates":[7.3507,5.1184],"properties":{"sector":"health"}},{"name":"angeled clinic","coordinates":[7.354767,5.123978],"properties":{"sector":"health"}},{"name":"osusu 11 phc","coordinates":[7.357916,5.112703],"properties":{"sector":"health"}},{"name":"st. theresa's maternity home and children's care.","coordinates":[7.354918,5.114678],"properties":{"sector":"health"}},{"name":"evergreen hospital/maternity","coordinates":[7.353303,5.120294],"properties":{"sector":"health"}},{"name":"new life hospital","coordinates":[7.349312,5.117521],"properties":{"sector":"health"}},{"name":"osusu 1 phc","coordinates":[7.351291,5.118331],"properties":{"sector":"health"}},{"name":"el-asamen specialist hospital and maternity","coordinates":[7.358888,5.120441],"properties":{"sector":"health"}},{"name":"nnadozie hospital/ maternity","coordinates":[7.358399,5.118717],"properties":{"sector":"health"}},{"name":"humana hospital","coordinates":[7.359032,5.120836],"properties":{"sector":"health"}},{"name":"todac clinic","coordinates":[7.361883,5.117028],"properties":{"sector":"health"}},{"name":"horstman hospital","coordinates":[7.360166,5.119629],"properties":{"sector":"health"}},{"name":"goodness and mercy hospital","coordinates":[7.345506,5.115793],"properties":{"sector":"health"}},{"name":"nnadozie hospital","coordinates":[7.358426,5.118754],"properties":{"sector":"health"}},{"name":"water point","coordinates":[7.352883,5.114607],"properties":{"sector":"water"}},{"name":"water point","coordinates":[7.352162,5.114821],"properties":{"sector":"water"}},{"name":"water point","coordinates":[7.351152,5.117601],"properties":{"sector":"water"}},{"name":"water point","coordinates":[7.352168,5.110532],"properties":{"sector":"water"}},{"name":"water point","coordinates":[7.353078,5.118915],"properties":{"sector":"water"}},{"name":"water point","coordinates":[7.351073,5.120075],"properties":{"sector":"water"}}],"offset":0,"limit":59,"total":59}));
 
 // Show first page
 $('.page')
@@ -172,14 +173,14 @@ $('.js-picture')
 
 /* Revisit stuff */
 // Icons ripped from nmis
-var icon_edu = new L.icon({iconUrl: "static/icons_f/normal_education.png"});
-var icon_health = new L.icon({iconUrl: "static/icons_f/normal_health.png"});
-var icon_water = new L.icon({iconUrl: "static/icons_f/normal_water.png"});
 function getNearbyFacilities(lat, lng, rad) {
-    var url = "http://revisit.global/api/v0/facilities.json";
+    var icon_edu = new L.icon({iconUrl: "static/icons_f/normal_education.png"});
+    var icon_health = new L.icon({iconUrl: "static/icons_f/normal_health.png"});
+    var icon_water = new L.icon({iconUrl: "static/icons_f/normal_water.png"});
 
     function drawPoint(lat, lng, name, type) {
         var marker; // leaflet wont let me create marker without icon info
+        console.log(lat, lng, name, type);
         switch(type) {
             case "education":
                 marker = new L.marker([lat, lng], {
@@ -208,26 +209,25 @@ function getNearbyFacilities(lat, lng, rad) {
         marker.addTo(map);
     };
 
-    // Revisit ajax req
-    $.get(url,{
-            near: lat + "," + lng,
-            rad: rad,
-            limit: 100,
-            fields: "name,coordinates,properties:sector", //filters results to include just those three fields,
-        },
-        function(data) {
-            var facilities = data.facilities;
-            var facility = null;
-            for(i = 0; i < facilities.length; i++) {
-                facility = facilities[i];
-                // stored lon/lat in revisit, switch around
-                drawPoint(facility.coordinates[1], 
-                        facility.coordinates[0], 
-                        facility.name, 
-                        facility.properties.sector);
-            }
+    var revisit = localStorage.getItem('revisit');
+    if (revisit) { // its in localStorage 
+        console.log("LOCAL");
+        var facilities = JSON.parse(revisit).facilities;
+        console.log(facilities);
+        var facility = null;
+        for(i = 0; i < facilities.length; i++) {
+            facility = facilities[i];
+            console.log(facility);
+            // stored lon/lat in revisit, switch around
+            drawPoint(facility.coordinates[1], 
+                    facility.coordinates[0], 
+                    facility.name, 
+                    facility.properties.sector);
         }
-    );
+
+        return;
+    }
+    // Could put ajax call back in?
 }
 
 // Finished
