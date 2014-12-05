@@ -67,7 +67,7 @@ var funcLayer = new L.TileLayer.Functional(function(view) {
     return deferred.promise();
 });
 
-self.map.addLayer(funcLayer);
+map.addLayer(funcLayer);
 
 
 function getImage(url, cb) {
