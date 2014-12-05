@@ -1,0 +1,13 @@
+CACHE MANIFEST
+# Version 0.1
+
+/
+/lib.js
+/app.js
+/style.css
+/icons/normal_education.png
+/icons/normal_health.png
+/icons/normal_water.png
+
+NETWORK:
+*
