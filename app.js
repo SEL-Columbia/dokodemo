@@ -179,30 +179,22 @@ function getNearbyFacilities(lat, lng, rad) {
     var icon_water = new L.icon({iconUrl: "static/icons_f/normal_water.png"});
 
     function drawPoint(lat, lng, name, type) {
-        var marker; // leaflet wont let me create marker without icon info
-        console.log(lat, lng, name, type);
+        var marker = new L.marker([lat, lng], {
+            title: name,
+            alt: name,
+            riseOnHover: true
+        });
+
         switch(type) {
             case "education":
-                marker = new L.marker([lat, lng], {
-                    title: name,
-                    alt: name,
-                    icon: icon_edu
-                });
+                marker.options.icon = icon_edu;
                 break;
             case "water":
-                marker = new L.marker([lat, lng], {
-                    title: name,
-                    alt: name,
-                    icon: icon_water
-                });
+                marker.options.icon = icon_water;
                 break;
             default:
                 // just mark it as health 
-                marker = new L.marker([lat, lng], {
-                    title: name,
-                    alt: name,
-                    icon: icon_health
-                });
+                marker.options.icon = icon_health;
                 break;
         }
 
@@ -211,13 +203,10 @@ function getNearbyFacilities(lat, lng, rad) {
 
     var revisit = localStorage.getItem('revisit');
     if (revisit) { // its in localStorage 
-        console.log("LOCAL");
         var facilities = JSON.parse(revisit).facilities;
-        console.log(facilities);
         var facility = null;
         for(i = 0; i < facilities.length; i++) {
             facility = facilities[i];
-            console.log(facility);
             // stored lon/lat in revisit, switch around
             drawPoint(facility.coordinates[1], 
                     facility.coordinates[0], 
