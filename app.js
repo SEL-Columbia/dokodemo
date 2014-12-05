@@ -42,16 +42,20 @@ $('.question__location_btn')
 
 
 // Taking pictures
+var video = null;
+navigator.getUserMedia = navigator.getUserMedia ||
+    navigator.webkitGetUserMedia ||
+    navigator.mozGetUserMedia ||
+    navigator.msGetUserMedia;
+navigator.getUserMedia({video: true}, function(localMediaStream) {
+    video = $('.question__video')[0];
+    video.src = window.URL.createObjectURL(localMediaStream);
+    video.play();
+}, function err() {});
+
 $('.js-picture')
     .click(function() {
-        navigator.getUserMedia = navigator.getUserMedia ||
-            navigator.webkitGetUserMedia ||
-            navigator.mozGetUserMedia ||
-            navigator.msGetUserMedia;
-        navigator.getUserMedia({video: true}, function(localMediaStream) {
-            var video = $('.question__video')[0];
-            video.src = window.URL.createObjectURL(localMediaStream);
-        }, function err() {});
+        video.pause();
     });
 
 // Show first page
