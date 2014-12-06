@@ -162,7 +162,7 @@ function getNearbyFacilities(lat, lng, rad) {
     var icon_edu = new L.icon({iconUrl: "icons/normal_education.png"});
     var icon_health = new L.icon({iconUrl: "icons/normal_health.png"});
     var icon_water = new L.icon({iconUrl: "icons/normal_water.png"});
-	var url = "http://revisit.global/api/v0/facilities.json"
+    var url = "http://revisit.global/api/v0/facilities.json"
     function drawPoint(lat, lng, name, type) {
         var marker = new L.marker([lat, lng], {
             title: name,
@@ -198,7 +198,6 @@ function getNearbyFacilities(lat, lng, rad) {
                     facility.name, 
                     facility.properties.sector);
         }
-		
     } else {
         // Revisit ajax req
         $.get(url,{
@@ -221,7 +220,7 @@ function getNearbyFacilities(lat, lng, rad) {
                 }
             }
         );
-	}
+    }
 }
 
 // Finished
